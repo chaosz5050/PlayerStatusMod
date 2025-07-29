@@ -1,0 +1,14 @@
+ModName: PlayerStatusMod
+Version: 1.0.0
+Author: René
+Description: A Player Status mod that announces when players join/leave the server
+GameVersion: 1.0.0
+ModGuid: PlayerStatusMod-a1b2c3d4-5e6f-7890-abcd-ef1234567890
+ModType: ModInterface
+ModDllName: PlayerStatusMod.dll
+ModClass: PlayerStatusMod
+LoadOnStart: true
+LoadOn:
+  - Dedicated
+  - Playfield
+Dependencies: []

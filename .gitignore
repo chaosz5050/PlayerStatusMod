@@ -1,0 +1,15 @@
+# Build outputs
+bin/
+obj/
+temp/
+
+# Visual Studio files
+.vs/
+*.user
+
+# Rider files
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
