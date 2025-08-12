@@ -1,0 +1,80 @@
+{
+  "welcome_enabled": true,
+  "welcome_message": "Welcome to the galaxy, {playername}!!",
+  "goodbye_enabled": true,
+  "goodbye_message": "Player {playername} has left our galaxy",
+  "afk_enabled": true,
+  "afk_announce_messages": true,
+  "afk_auto_timeout_minutes": 15,
+  "afk_default_message": "Away from keyboard",
+  "afk_list_command_enabled": true,
+  "help_command_enabled": true,
+  "log_max_file_size_mb": 2,
+  "log_files_to_keep": 2,
+  "scheduled_messages": [
+    {
+      "enabled": true,
+      "text": "Visit our Discord for important messages: discord.gg/Bdd3Kkzs",
+      "interval_minutes": 60,
+      "last_sent": "1970-01-01T00:00:00"
+    },
+    {
+      "enabled": true,
+      "text": "Server reboot and backup every night @ 3:00 - 3:15",
+      "interval_minutes": 60,
+      "last_sent": "1970-01-01T00:00:00"
+    },
+    {
+      "enabled": true,
+      "text": "NEW: Emergency teleport (3 timer per 24 hours) /help for more info.",
+      "interval_minutes": 30,
+      "last_sent": "1970-01-01T00:00:00"
+    }
+  ],
+  "help_commands": [
+    {
+      "command": "/vb1",
+      "description": "Open virtual backpack 1"
+    },
+    {
+      "command": "/vb2",
+      "description": "Open virtual backpack 2"
+    },
+    {
+      "command": "/vb3",
+      "description": "Open virtual backpack 3"
+    },
+    {
+      "command": "/vb4",
+      "description": "Open virtual backpack 4"
+    },
+    {
+      "command": "/vb5",
+      "description": "Open virtual backpack 5"
+    },
+    {
+      "command": "/afk [reason]",
+      "description": "Mark yourself as AFK with optional reason"
+    },
+    {
+      "command": "/back",
+      "description": "Return from AFK status"
+    },
+    {
+      "command": "/afklist",
+      "description": "View currently AFK players"
+    },
+    {
+      "command": "/sethome",
+      "description": "Set emergency teleport location"
+    },
+    {
+      "command": "/home",
+      "description": "Emergency teleport with confirmation dialog"
+    },
+    {
+      "command": "/home uses",
+      "description": "Check remaining daily teleport uses"
+    }
+  ]
+}

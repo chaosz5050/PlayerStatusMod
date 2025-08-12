@@ -7,6 +7,7 @@ A server-side mod that provides configurable player messaging functionality for 
 - **Welcome Messages**: Customizable messages when players join the server
 - **Goodbye Messages**: Customizable messages when players leave the server  
 - **Scheduled Messages**: Configurable recurring announcements with custom intervals
+- **AFK System**: Players can mark themselves as AFK with custom messages and view who's currently away
 - **Real-time Configuration**: Updates configuration without server restart via file monitoring
 - **Smart Player Name Resolution**: Handles player name lookup with caching and fallback mechanisms
 - **Comprehensive Logging**: Detailed console output for debugging and monitoring
@@ -60,6 +61,22 @@ If not using Empyrion Web Helper, you can manually edit `PlayerStatusConfig.json
   "welcome_message": "Welcome to the galaxy, {playername}!",
   "goodbye_enabled": true,
   "goodbye_message": "Player {playername} has left our galaxy",
+  "afk_enabled": true,
+  "afk_announce_messages": true,
+  "afk_auto_timeout_minutes": 15,
+  "afk_default_message": "Away from keyboard",
+  "afk_list_command_enabled": true,
+  "help_command_enabled": true,
+  "help_commands": [
+    {
+      "command": "/vb1",
+      "description": "Open virtual backpack 1"
+    },
+    {
+      "command": "/afk [reason]",
+      "description": "Mark yourself as AFK with optional reason"
+    }
+  ],
   "scheduled_messages": [
     {
       "enabled": true,
@@ -83,6 +100,43 @@ If not using Empyrion Web Helper, you can manually edit `PlayerStatusConfig.json
 - **enabled**: Whether the message is active
 - **text**: The message content
 - **last_sent**: Timestamp of last send (automatically managed)
+
+### AFK System
+- **afk_enabled**: Enable/disable the AFK system
+- **afk_announce_messages**: Announce when players go AFK or return
+- **afk_auto_timeout_minutes**: Automatic AFK timeout (not yet implemented)
+- **afk_default_message**: Default AFK reason if none provided
+- **afk_list_command_enabled**: Enable/disable the `/afklist` command
+
+### Help System
+- **help_command_enabled**: Enable/disable the `/help` command
+- **help_commands**: Array of commands to display in help
+  - **command**: The command syntax (e.g., "/vb1", "/afk [reason]")
+  - **description**: Brief explanation of what the command does
+
+## Player Commands
+
+### General Commands
+- `/help` - Display all available commands with descriptions (private message)
+
+### AFK Commands
+- `/afk [reason]` - Mark yourself as AFK with an optional custom reason
+- `/back` - Return from AFK status
+- `/afklist` - View currently AFK players (private message to requester)
+
+### Virtual Backpack Commands
+- `/vb1` to `/vb5` - Open virtual backpacks 1-5 (if available on server)
+
+**Examples:**
+```
+/help
+/afk
+/afk taking a break
+/afk dinner time
+/back
+/afklist
+/vb1
+```
 
 ## Development
 
@@ -111,6 +165,17 @@ PlayerStatusMod/
 ```
 
 ## Recent Updates
+
+### v1.2.0 - AFK System & Help Command
+- **Added**: Complete AFK system with player commands
+- **Added**: `/afk [reason]` command to mark yourself as away
+- **Added**: `/back` command to return from AFK
+- **Added**: `/afklist` command to view currently AFK players
+- **Added**: `/help` command showing all available commands
+- **Added**: Configurable help system - easily add/modify commands shown
+- **Added**: Configurable AFK announcements and settings
+- **Enhanced**: Player name resolution for better AFK tracking
+- **Enhanced**: Debug logging throughout AFK system
 
 ### v1.1.0 - Double Messaging Fix
 - **Fixed**: Critical issue where scheduled messages were sent multiple times

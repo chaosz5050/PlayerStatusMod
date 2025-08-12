@@ -1,0 +1,1405 @@
+.assembly extern mscorlib
+{
+  .ver 4:0:0:0
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
+}
+.assembly extern 'protobuf-net'
+{
+  .ver 2:0:0:668
+  .publickeytoken = (25 7B 51 D8 7D 2E 4D 67 ) // %{Q.}.Mg
+}
+.assembly extern UnityEngine.CoreModule
+{
+  .ver 0:0:0:0
+}
+.assembly extern System
+{
+  .ver 4:0:0:0
+  .publickeytoken = (B7 7A 5C 56 19 34 E0 89 ) // .z\V.4..
+}
+.assembly extern Mif
+{
+  .ver 0:0:0:0
+}
+.assembly extern Utils
+{
+  .ver 0:0:0:0
+}
+.assembly 'ModApi'
+{
+  .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+  .custom instance void class [mscorlib]System.Runtime.CompilerServices.CompilationRelaxationsAttribute::'.ctor'(int32) =  (01 00 08 00 00 00 00 00 ) // ........
+
+  .custom instance void class [mscorlib]System.Runtime.CompilerServices.RuntimeCompatibilityAttribute::'.ctor'() =  (
+		01 00 01 00 54 02 16 57 72 61 70 4E 6F 6E 45 78   // ....T..WrapNonEx
+		63 65 70 74 69 6F 6E 54 68 72 6F 77 73 01       ) // ceptionThrows.
+
+  .custom instance void class [mscorlib]System.Diagnostics.DebuggableAttribute::'.ctor'(valuetype [mscorlib]System.Diagnostics.DebuggableAttribute/DebuggingModes) =  (01 00 02 00 00 00 00 00 ) // ........
+
+  .hash algorithm 0x00008004
+  .ver  0:0:0:0
+}
+.module ModApi.dll // GUID = {1AA81984-CC2C-47F5-AB75-2F76756BBD0C}
+
+
+  .class public sequential ansi sealed beforefieldinit FactionData
+  	extends [mscorlib]System.ValueType
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoContractAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public  valuetype FactionGroup Group
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 01 00 00 00 00 00 ) // ........
+
+    .field  public  int32 Id
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 02 00 00 00 00 00 ) // ........
+
+
+    // method line 1
+    .method public hidebysig 
+           instance default void Read (class [mscorlib]System.IO.BinaryReader 'br')  cil managed 
+    {
+        // Method begins at RVA 0x2050
+	// Code size 25 (0x19)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  ldarg.1 
+	IL_0002:  callvirt instance unsigned int8 class [mscorlib]System.IO.BinaryReader::ReadByte()
+	IL_0007:  stfld valuetype FactionGroup FactionData::Group
+	IL_000c:  ldarg.0 
+	IL_000d:  ldarg.1 
+	IL_000e:  callvirt instance int32 class [mscorlib]System.IO.BinaryReader::ReadInt32()
+	IL_0013:  stfld int32 FactionData::Id
+	IL_0018:  ret 
+    } // end of method FactionData::Read
+
+    // method line 2
+    .method public hidebysig 
+           instance default void Write (class [mscorlib]System.IO.BinaryWriter bw)  cil managed 
+    {
+        // Method begins at RVA 0x206a
+	// Code size 25 (0x19)
+	.maxstack 8
+	IL_0000:  ldarg.1 
+	IL_0001:  ldarg.0 
+	IL_0002:  ldfld valuetype FactionGroup FactionData::Group
+	IL_0007:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(unsigned int8)
+	IL_000c:  ldarg.1 
+	IL_000d:  ldarg.0 
+	IL_000e:  ldfld int32 FactionData::Id
+	IL_0013:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(int32)
+	IL_0018:  ret 
+    } // end of method FactionData::Write
+
+    // method line 3
+    .method public virtual hidebysig 
+           instance default string ToString ()  cil managed 
+    {
+        // Method begins at RVA 0x2084
+	// Code size 33 (0x21)
+	.maxstack 8
+	IL_0000:  ldstr "{0}.{1}"
+	IL_0005:  ldarg.0 
+	IL_0006:  ldfld valuetype FactionGroup FactionData::Group
+	IL_000b:  box FactionGroup
+	IL_0010:  ldarg.0 
+	IL_0011:  ldfld int32 FactionData::Id
+	IL_0016:  box [mscorlib]System.Int32
+	IL_001b:  call string string::Format(string, object, object)
+	IL_0020:  ret 
+    } // end of method FactionData::ToString
+
+  } // end of class FactionData
+
+  .class public auto ansi sealed EntityType
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype EntityType Unknown = int32(0x00000000)
+    .field public static literal  valuetype EntityType Player = int32(0x00000001)
+    .field public static literal  valuetype EntityType BA = int32(0x00000002)
+    .field public static literal  valuetype EntityType CV = int32(0x00000003)
+    .field public static literal  valuetype EntityType SV = int32(0x00000004)
+    .field public static literal  valuetype EntityType HV = int32(0x00000005)
+    .field public static literal  valuetype EntityType AstRes = int32(0x00000006)
+    .field public static literal  valuetype EntityType AstVoxel = int32(0x00000007)
+    .field public static literal  valuetype EntityType EscapePod = int32(0x00000008)
+    .field public static literal  valuetype EntityType Animal = int32(0x00000009)
+    .field public static literal  valuetype EntityType Turret = int32(0x0000000a)
+    .field public static literal  valuetype EntityType Item = int32(0x0000000b)
+    .field public static literal  valuetype EntityType PlayerDrone = int32(0x0000000c)
+    .field public static literal  valuetype EntityType Trader = int32(0x0000000d)
+    .field public static literal  valuetype EntityType UnderRes = int32(0x0000000e)
+    .field public static literal  valuetype EntityType EnemyDrone = int32(0x0000000f)
+    .field public static literal  valuetype EntityType PlayerBackpack = int32(0x00000010)
+    .field public static literal  valuetype EntityType DropContainer = int32(0x00000011)
+    .field public static literal  valuetype EntityType ExplosiveDevice = int32(0x00000012)
+    .field public static literal  valuetype EntityType PlayerBike = int32(0x00000013)
+    .field public static literal  valuetype EntityType PlayerBikeFolded = int32(0x00000014)
+    .field public static literal  valuetype EntityType Asteroid = int32(0x00000015)
+    .field public static literal  valuetype EntityType Civilian = int32(0x00000016)
+    .field public static literal  valuetype EntityType Cyborg = int32(0x00000017)
+    .field public static literal  valuetype EntityType TroopTransport = int32(0x00000018)
+    .field public static literal  valuetype EntityType MissionContainer = int32(0x00000019)
+    .field public static literal  valuetype EntityType Proxy = int32(0x0000001a)
+    .field public static literal  valuetype EntityType TerrainPlaceable = int32(0x0000001b)
+    .field public static literal  valuetype EntityType AstRingPlanet = int32(0x0000001c)
+    .field public static literal  valuetype EntityType NPCFighter = int32(0x0000001d)
+
+  } // end of class EntityType
+
+  .class public auto ansi sealed FactionGroup
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  unsigned int8 value__
+    .field public static literal  valuetype FactionGroup Faction = int8(0x00)
+    .field public static literal  valuetype FactionGroup Player = int8(0x01)
+    .field public static literal  valuetype FactionGroup Zirax = int8(0x02)
+    .field public static literal  valuetype FactionGroup Predator = int8(0x03)
+    .field public static literal  valuetype FactionGroup Prey = int8(0x04)
+    .field public static literal  valuetype FactionGroup Admin = int8(0x05)
+    .field public static literal  valuetype FactionGroup Talon = int8(0x06)
+    .field public static literal  valuetype FactionGroup Polaris = int8(0x07)
+    .field public static literal  valuetype FactionGroup Alien = int8(0x08)
+    .field public static literal  valuetype FactionGroup Pirates = int8(0x09)
+    .field public static literal  valuetype FactionGroup Kriel = int8(0x0a)
+    .field public static literal  valuetype FactionGroup UCH = int8(0x0b)
+    .field public static literal  valuetype FactionGroup Trader = int8(0x0c)
+    .field public static literal  valuetype FactionGroup Civilian = int8(0x0d)
+    .field public static literal  valuetype FactionGroup DynFaction1 = int8(0x09)
+    .field public static literal  valuetype FactionGroup DynFaction2 = int8(0x0a)
+    .field public static literal  valuetype FactionGroup DynFaction3 = int8(0x0b)
+    .field public static literal  valuetype FactionGroup DynFaction4 = int8(0x0c)
+    .field public static literal  valuetype FactionGroup DynFaction5 = int8(0x0d)
+    .field public static literal  valuetype FactionGroup DynFaction6 = int8(0x0e)
+    .field public static literal  valuetype FactionGroup DynFaction7 = int8(0x0f)
+    .field public static literal  valuetype FactionGroup DynFaction8 = int8(0x10)
+    .field public static literal  valuetype FactionGroup DynFaction9 = int8(0x11)
+    .field public static literal  valuetype FactionGroup DynFaction10 = int8(0x12)
+    .field public static literal  valuetype FactionGroup Main = int8(0xfe)
+    .field public static literal  valuetype FactionGroup NoFaction = int8(0xff)
+
+  } // end of class FactionGroup
+
+  .class public auto ansi sealed FactionRole
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype FactionRole Founder = int32(0x00000000)
+    .field public static literal  valuetype FactionRole Admin = int32(0x00000001)
+    .field public static literal  valuetype FactionRole Member = int32(0x00000002)
+    .field public static literal  valuetype FactionRole Apprentice = int32(0x00000003)
+    .field public static literal  valuetype FactionRole NotSet = int32(0x00000004)
+
+  } // end of class FactionRole
+
+  .class public auto ansi sealed GameEventType
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype GameEventType None = int32(0x00000000)
+    .field public static literal  valuetype GameEventType InventoryOpened = int32(0x00000001)
+    .field public static literal  valuetype GameEventType InventoryClosed = int32(0x00000002)
+    .field public static literal  valuetype GameEventType InventoryEmptied = int32(0x00000003)
+    .field public static literal  valuetype GameEventType InventoryContains = int32(0x00000004)
+    .field public static literal  valuetype GameEventType InventoryContainsCountOfItem = int32(0x00000005)
+    .field public static literal  valuetype GameEventType ToolbarContains = int32(0x00000006)
+    .field public static literal  valuetype GameEventType ConstructionQueueContains = int32(0x00000007)
+    .field public static literal  valuetype GameEventType BlocksPlaced = int32(0x00000008)
+    .field public static literal  valuetype GameEventType StructureSpawned = int32(0x00000009)
+    .field public static literal  valuetype GameEventType WindowOpened = int32(0x0000000a)
+    .field public static literal  valuetype GameEventType WindowClosed = int32(0x0000000b)
+    .field public static literal  valuetype GameEventType ItemsPickedUp = int32(0x0000000c)
+    .field public static literal  valuetype GameEventType ItemsUsed = int32(0x0000000d)
+    .field public static literal  valuetype GameEventType ItemsConsumed = int32(0x0000000e)
+    .field public static literal  valuetype GameEventType ItemsUnlocked = int32(0x0000000f)
+    .field public static literal  valuetype GameEventType ItemsCrafted = int32(0x00000010)
+    .field public static literal  valuetype GameEventType BlocksRemoved = int32(0x00000011)
+    .field public static literal  valuetype GameEventType BlockDestroyed = int32(0x00000012)
+    .field public static literal  valuetype GameEventType DevicePowered = int32(0x00000013)
+    .field public static literal  valuetype GameEventType DeviceNamePowered = int32(0x00000014)
+    .field public static literal  valuetype GameEventType DeviceUsed = int32(0x00000015)
+    .field public static literal  valuetype GameEventType MainPowerSwitched = int32(0x00000016)
+    .field public static literal  valuetype GameEventType ResourceDiscovered = int32(0x00000017)
+    .field public static literal  valuetype GameEventType PoiDiscovered = int32(0x00000018)
+    .field public static literal  valuetype GameEventType NearResource = int32(0x00000019)
+    .field public static literal  valuetype GameEventType NearPoi = int32(0x0000001a)
+    .field public static literal  valuetype GameEventType NearUnit = int32(0x0000001b)
+    .field public static literal  valuetype GameEventType SubjectKilled = int32(0x0000001c)
+    .field public static literal  valuetype GameEventType Signal = int32(0x0000001d)
+    .field public static literal  valuetype GameEventType PlayfieldEntered = int32(0x0000001e)
+    .field public static literal  valuetype GameEventType PlayfieldTypeEntered = int32(0x0000001f)
+    .field public static literal  valuetype GameEventType GameStarted = int32(0x00000020)
+    .field public static literal  valuetype GameEventType PlayerDied = int32(0x00000021)
+    .field public static literal  valuetype GameEventType PlayerLevelUp = int32(0x00000022)
+    .field public static literal  valuetype GameEventType SettingChanged = int32(0x00000023)
+    .field public static literal  valuetype GameEventType StatusEffectApplied = int32(0x00000024)
+    .field public static literal  valuetype GameEventType AttackedEntity = int32(0x00000025)
+    .field public static literal  valuetype GameEventType KilledEntity = int32(0x00000026)
+    .field public static literal  valuetype GameEventType EnterSVCockpit = int32(0x00000027)
+    .field public static literal  valuetype GameEventType EnterGVCockpit = int32(0x00000028)
+    .field public static literal  valuetype GameEventType PlacedConstructor = int32(0x00000029)
+    .field public static literal  valuetype GameEventType PlacedFoodProcessor = int32(0x0000002a)
+    .field public static literal  valuetype GameEventType PlacedFuelTankInBase = int32(0x0000002b)
+    .field public static literal  valuetype GameEventType PlacedGeneratorInBase = int32(0x0000002c)
+    .field public static literal  valuetype GameEventType PlacedMedicinelabMS = int32(0x0000002d)
+    .field public static literal  valuetype GameEventType EscapePodHitGround = int32(0x0000002e)
+    .field public static literal  valuetype GameEventType OpenedBlueprintLibCreative = int32(0x0000002f)
+    .field public static literal  valuetype GameEventType OpenedBlueprintLibSurvival = int32(0x00000030)
+    .field public static literal  valuetype GameEventType OpenedBlueprintLibSaveOverwrite = int32(0x00000031)
+    .field public static literal  valuetype GameEventType OpenedBlueprintFactory = int32(0x00000032)
+    .field public static literal  valuetype GameEventType OpenedEnergyNeedingObject = int32(0x00000033)
+    .field public static literal  valuetype GameEventType OpenedConstructor = int32(0x00000034)
+    .field public static literal  valuetype GameEventType OpenedOxygenGenerator = int32(0x00000035)
+    .field public static literal  valuetype GameEventType CreatedBase = int32(0x00000036)
+    .field public static literal  valuetype GameEventType CreatedSV = int32(0x00000037)
+    .field public static literal  valuetype GameEventType CreatedGV = int32(0x00000038)
+    .field public static literal  valuetype GameEventType CreatedCV = int32(0x00000039)
+    .field public static literal  valuetype GameEventType LowOxygen = int32(0x0000003a)
+    .field public static literal  valuetype GameEventType LowFood = int32(0x0000003b)
+    .field public static literal  valuetype GameEventType PlantHarvested = int32(0x0000003c)
+    .field public static literal  valuetype GameEventType DrilledOrFilledBlocks = int32(0x0000003d)
+    .field public static literal  valuetype GameEventType OresDropped = int32(0x0000003e)
+    .field public static literal  valuetype GameEventType AttackedBlock = int32(0x0000003f)
+    .field public static literal  valuetype GameEventType StructureInEnemyTerritory = int32(0x00000040)
+    .field public static literal  valuetype GameEventType BlockChanged = int32(0x00000041)
+    .field public static literal  valuetype GameEventType AttackWave = int32(0x00000042)
+    .field public static literal  valuetype GameEventType WaveDestroyed = int32(0x00000043)
+    .field public static literal  valuetype GameEventType SetTimer = int32(0x00000044)
+    .field public static literal  valuetype GameEventType NpcCorePlaced = int32(0x00000045)
+    .field public static literal  valuetype GameEventType ShieldAttacked = int32(0x00000046)
+    .field public static literal  valuetype GameEventType WaitAction = int32(0x00000047)
+    .field public static literal  valuetype GameEventType DialogOption = int32(0x00000048)
+    .field public static literal  valuetype GameEventType CreatedAstVoxel = int32(0x00000049)
+    .field public static literal  valuetype GameEventType GameEnded = int32(0x0000004a)
+    .field public static literal  valuetype GameEventType StarClassEntered = int32(0x0000004b)
+    .field public static literal  valuetype GameEventType PlayerStatChanged = int32(0x0000004c)
+    .field public static literal  valuetype GameEventType DayNightChange = int32(0x0000004d)
+    .field public static literal  valuetype GameEventType PlayfieldLeft = int32(0x0000004e)
+    .field public static literal  valuetype GameEventType PlayfieldTypeLeft = int32(0x0000004f)
+    .field public static literal  valuetype GameEventType StatusEffectRemoved = int32(0x00000050)
+    .field public static literal  valuetype GameEventType BiomeChanged = int32(0x00000051)
+    .field public static literal  valuetype GameEventType InventoryOpenedPoi = int32(0x00000052)
+    .field public static literal  valuetype GameEventType InventoryClosedPoi = int32(0x00000053)
+    .field public static literal  valuetype GameEventType StructureProduced = int32(0x00000054)
+    .field public static literal  valuetype GameEventType ViewSelected = int32(0x00000055)
+    .field public static literal  valuetype GameEventType HoldingItem = int32(0x00000056)
+    .field public static literal  valuetype GameEventType ArmorEquipped = int32(0x00000057)
+    .field public static literal  valuetype GameEventType ArmorUnequipped = int32(0x00000058)
+    .field public static literal  valuetype GameEventType ArmorBoostEquipped = int32(0x00000059)
+    .field public static literal  valuetype GameEventType ArmorBoostUnequipped = int32(0x0000005a)
+
+  } // end of class GameEventType
+
+  .class public auto ansi sealed PlayfieldType
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype PlayfieldType Undefined = int32(0x00000000)
+    .field public static literal  valuetype PlayfieldType Planet = int32(0x00000001)
+    .field public static literal  valuetype PlayfieldType Space = int32(0x00000002)
+    .field public static literal  valuetype PlayfieldType Sun = int32(0x00000003)
+    .field public static literal  valuetype PlayfieldType Moon = int32(0x00000004)
+    .field public static literal  valuetype PlayfieldType GasGiant = int32(0x00000005)
+
+  } // end of class PlayfieldType
+
+  .class public auto ansi sealed BlockSignalType
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype BlockSignalType None = int32(0x00000000)
+    .field public static literal  valuetype BlockSignalType On = int32(0x00000001)
+    .field public static literal  valuetype BlockSignalType Off = int32(0x00000002)
+    .field public static literal  valuetype BlockSignalType OnOff = int32(0x00000003)
+
+  } // end of class BlockSignalType
+
+  .class public auto ansi sealed BlockFunction
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype BlockFunction Undefined = int32(0x00000000)
+    .field public static literal  valuetype BlockFunction Powered = int32(0x00000001)
+    .field public static literal  valuetype BlockFunction Unlock = int32(0x00000002)
+    .field public static literal  valuetype BlockFunction Open = int32(0x00000003)
+
+  } // end of class BlockFunction
+
+  .class public auto ansi sealed SignalBehaviour
+  	extends [mscorlib]System.Enum
+  {
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype SignalBehaviour Undefined = int32(0x00000000)
+    .field public static literal  valuetype SignalBehaviour Follow = int32(0x00000001)
+    .field public static literal  valuetype SignalBehaviour Toggle = int32(0x00000002)
+    .field public static literal  valuetype SignalBehaviour On = int32(0x00000003)
+    .field public static literal  valuetype SignalBehaviour Off = int32(0x00000004)
+
+  } // end of class SignalBehaviour
+
+  .class public auto ansi sealed DeviceTypeName
+  	extends [mscorlib]System.Enum
+  {
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype DeviceTypeName All_NOT_USED_YET = int32(0x00000000)
+    .field public static literal  valuetype DeviceTypeName AmmoCntr = int32(0x00000001)
+    .field public static literal  valuetype DeviceTypeName Container = int32(0x00000002)
+    .field public static literal  valuetype DeviceTypeName Fridge = int32(0x00000003)
+    .field public static literal  valuetype DeviceTypeName HarvestCntr = int32(0x00000004)
+    .field public static literal  valuetype DeviceTypeName LCD = int32(0x00000005)
+    .field public static literal  valuetype DeviceTypeName Light = int32(0x00000006)
+    .field public static literal  valuetype DeviceTypeName Portal = int32(0x00000007)
+    .field public static literal  valuetype DeviceTypeName Teleporter = int32(0x00000008)
+
+  } // end of class DeviceTypeName
+
+  .class public auto ansi sealed CoreType
+  	extends [mscorlib]System.Enum
+  {
+    .field  public specialname rtspecialname  int32 value__
+    .field public static literal  valuetype CoreType NoData = int32(0xffffffff)
+    .field public static literal  valuetype CoreType None = int32(0x00000000)
+    .field public static literal  valuetype CoreType Player = int32(0x00000001)
+    .field public static literal  valuetype CoreType Admin = int32(0x00000002)
+    .field public static literal  valuetype CoreType NoFaction = int32(0x00000003)
+    .field public static literal  valuetype CoreType NoFactionAdmin = int32(0x00000004)
+    .field public static literal  valuetype CoreType NPC = int32(0x00000005)
+    .field public static literal  valuetype CoreType NPCAdmin = int32(0x00000006)
+
+  } // end of class CoreType
+
+  .class public auto ansi sealed BlockSide
+  	extends [mscorlib]System.Enum
+  {
+    .field  public specialname rtspecialname  unsigned int8 value__
+    .field public static literal  valuetype BlockSide Top = int8(0x00)
+    .field public static literal  valuetype BlockSide Bottom = int8(0x01)
+    .field public static literal  valuetype BlockSide North = int8(0x02)
+    .field public static literal  valuetype BlockSide West = int8(0x03)
+    .field public static literal  valuetype BlockSide South = int8(0x04)
+    .field public static literal  valuetype BlockSide East = int8(0x05)
+
+  } // end of class BlockSide
+
+  .class public auto ansi abstract sealed beforefieldinit SharedUtils
+  	extends [mscorlib]System.Object
+  {
+    .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .custom instance void class [mscorlib]System.Reflection.ObfuscationAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+
+    // method line 4
+    .method public static hidebysig 
+           default void LogObsolete (string yamlName, string section, string param, string msg, [opt] bool isError)  cil managed 
+    {
+	.param [5] = bool(false)
+        // Method begins at RVA 0x20a8
+	// Code size 70 (0x46)
+	.maxstack 4
+	.locals init (
+		string	V_0)
+	IL_0000:  ldc.i4.7 
+	IL_0001:  newarr [mscorlib]System.String
+	IL_0006:  dup 
+	IL_0007:  ldc.i4.0 
+	IL_0008:  ldarg.0 
+	IL_0009:  stelem.ref 
+	IL_000a:  dup 
+	IL_000b:  ldc.i4.1 
+	IL_000c:  ldstr ".yaml: "
+	IL_0011:  stelem.ref 
+	IL_0012:  dup 
+	IL_0013:  ldc.i4.2 
+	IL_0014:  ldarg.1 
+	IL_0015:  stelem.ref 
+	IL_0016:  dup 
+	IL_0017:  ldc.i4.3 
+	IL_0018:  ldstr " parameter '"
+	IL_001d:  stelem.ref 
+	IL_001e:  dup 
+	IL_001f:  ldc.i4.4 
+	IL_0020:  ldarg.2 
+	IL_0021:  stelem.ref 
+	IL_0022:  dup 
+	IL_0023:  ldc.i4.5 
+	IL_0024:  ldstr "' is obsolete: "
+	IL_0029:  stelem.ref 
+	IL_002a:  dup 
+	IL_002b:  ldc.i4.6 
+	IL_002c:  ldarg.3 
+	IL_002d:  stelem.ref 
+	IL_002e:  call string string::Concat(string[])
+	IL_0033:  stloc.0 
+	IL_0034:  ldarg.s 4
+	IL_0036:  brfalse.s IL_003f
+
+	IL_0038:  ldloc.0 
+	IL_0039:  call void [Utils]EleonUtils::LogError(string)
+	IL_003e:  ret 
+	IL_003f:  ldloc.0 
+	IL_0040:  call void [Utils]EleonUtils::LogWarning(string)
+	IL_0045:  ret 
+    } // end of method SharedUtils::LogObsolete
+
+    // method line 5
+    .method public static hidebysig 
+           (null) cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x20fa
+	// Code size 24 (0x18)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  callvirt instance float32 class [mscorlib]System.IO.BinaryReader::ReadSingle()
+	IL_0006:  ldarg.0 
+	IL_0007:  callvirt instance float32 class [mscorlib]System.IO.BinaryReader::ReadSingle()
+	IL_000c:  ldarg.0 
+	IL_000d:  callvirt instance float32 class [mscorlib]System.IO.BinaryReader::ReadSingle()
+	IL_0012:  newobj instance void [UnityEngine.CoreModule]UnityEngine.Vector3::.ctor(float32, float32, float32)
+	IL_0017:  ret 
+    } // end of method SharedUtils::<NULL METHOD SIGNATURE>
+
+    // method line 6
+    .method public static hidebysig 
+           (null) cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x2113
+	// Code size 37 (0x25)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  ldarg.1 
+	IL_0002:  ldfld float32 [UnityEngine.CoreModule]UnityEngine.Vector3::x
+	IL_0007:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(float32)
+	IL_000c:  ldarg.0 
+	IL_000d:  ldarg.1 
+	IL_000e:  ldfld float32 [UnityEngine.CoreModule]UnityEngine.Vector3::y
+	IL_0013:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(float32)
+	IL_0018:  ldarg.0 
+	IL_0019:  ldarg.1 
+	IL_001a:  ldfld float32 [UnityEngine.CoreModule]UnityEngine.Vector3::z
+	IL_001f:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(float32)
+	IL_0024:  ret 
+    } // end of method SharedUtils::<NULL METHOD SIGNATURE>
+
+    // method line 7
+    .method public static hidebysig 
+           default void Write<T> (class [mscorlib]System.IO.BinaryWriter bw, class [mscorlib]System.Collections.Generic.List`1<!!T> data, class [mscorlib]System.Action`1<!!T> write)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x213c
+	// Code size 59 (0x3b)
+	.maxstack 3
+	.locals init (
+		class SharedUtils/'<>c__DisplayClass3_0`1'<!!T>	V_0,
+		bool	V_1)
+	IL_0000:  newobj instance void class SharedUtils/'<>c__DisplayClass3_0`1'<!!T>::'.ctor'()
+	IL_0005:  stloc.0 
+	IL_0006:  ldloc.0 
+	IL_0007:  ldarg.2 
+	IL_0008:  stfld class [mscorlib]System.Action`1<!0> class SharedUtils/'<>c__DisplayClass3_0`1'<!!0>::write
+	IL_000d:  ldarg.1 
+	IL_000e:  ldnull 
+	IL_000f:  cgt.un 
+	IL_0011:  stloc.1 
+	IL_0012:  ldarg.0 
+	IL_0013:  ldloc.1 
+	IL_0014:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(bool)
+	IL_0019:  ldloc.1 
+	IL_001a:  brfalse.s IL_003a
+
+	IL_001c:  ldarg.0 
+	IL_001d:  ldarg.1 
+	IL_001e:  callvirt instance int32 class [mscorlib]System.Collections.Generic.List`1<!!T>::get_Count()
+	IL_0023:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(int32)
+	IL_0028:  ldarg.1 
+	IL_0029:  ldloc.0 
+	IL_002a:  ldftn instance void class SharedUtils/'<>c__DisplayClass3_0`1'<!!T>::'<Write>b__0'(!0)
+	IL_0030:  newobj instance void class [mscorlib]System.Action`1<!!T>::'.ctor'(object, native int)
+	IL_0035:  callvirt instance void class [mscorlib]System.Collections.Generic.List`1<!!T>::ForEach(class [mscorlib]System.Action`1<!0>)
+	IL_003a:  ret 
+    } // end of method SharedUtils::Write
+
+    // method line 8
+    .method public static hidebysig 
+           default class [mscorlib]System.Collections.Generic.List`1<!!T> ReadList<T> (class [mscorlib]System.IO.BinaryReader 'br', class [mscorlib]System.Func`1<!!T> read)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x2184
+	// Code size 50 (0x32)
+	.maxstack 2
+	.locals init (
+		class [mscorlib]System.Collections.Generic.List`1<!!T>	V_0,
+		int32	V_1,
+		int32	V_2)
+	IL_0000:  ldnull 
+	IL_0001:  stloc.0 
+	IL_0002:  ldarg.0 
+	IL_0003:  callvirt instance bool class [mscorlib]System.IO.BinaryReader::ReadBoolean()
+	IL_0008:  brfalse.s IL_0030
+
+	IL_000a:  ldarg.0 
+	IL_000b:  callvirt instance int32 class [mscorlib]System.IO.BinaryReader::ReadInt32()
+	IL_0010:  stloc.1 
+	IL_0011:  ldloc.1 
+	IL_0012:  newobj instance void class [mscorlib]System.Collections.Generic.List`1<!!T>::'.ctor'(int32)
+	IL_0017:  stloc.0 
+	IL_0018:  ldc.i4.0 
+	IL_0019:  stloc.2 
+	IL_001a:  br.s IL_002c
+
+	IL_001c:  ldloc.0 
+	IL_001d:  ldarg.1 
+	IL_001e:  callvirt instance !0 class [mscorlib]System.Func`1<!!T>::Invoke()
+	IL_0023:  callvirt instance void class [mscorlib]System.Collections.Generic.List`1<!!T>::Add(!0)
+	IL_0028:  ldloc.2 
+	IL_0029:  ldc.i4.1 
+	IL_002a:  add 
+	IL_002b:  stloc.2 
+	IL_002c:  ldloc.2 
+	IL_002d:  ldloc.1 
+	IL_002e:  blt.s IL_001c
+
+	IL_0030:  ldloc.0 
+	IL_0031:  ret 
+    } // end of method SharedUtils::ReadList
+
+    // method line 9
+    .method public static hidebysig 
+           default void Write<K,V> (class [mscorlib]System.IO.BinaryWriter bw, class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V> data, class [mscorlib]System.Action`1<valuetype [mscorlib]System.Collections.Generic.KeyValuePair`2<!!K, !!V>> write)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x21c4
+	// Code size 77 (0x4d)
+	.maxstack 2
+	.locals init (
+		bool	V_0,
+		valuetype [mscorlib]System.Collections.Generic.Dictionary`2/Enumerator<!!K, !!V>	V_1,
+		valuetype [mscorlib]System.Collections.Generic.KeyValuePair`2<!!K, !!V>	V_2)
+	IL_0000:  ldarg.1 
+	IL_0001:  ldnull 
+	IL_0002:  cgt.un 
+	IL_0004:  stloc.0 
+	IL_0005:  ldarg.0 
+	IL_0006:  ldloc.0 
+	IL_0007:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(bool)
+	IL_000c:  ldloc.0 
+	IL_000d:  brfalse.s IL_004c
+
+	IL_000f:  ldarg.0 
+	IL_0010:  ldarg.1 
+	IL_0011:  callvirt instance int32 class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V>::get_Count()
+	IL_0016:  callvirt instance void class [mscorlib]System.IO.BinaryWriter::Write(int32)
+	IL_001b:  ldarg.1 
+	IL_001c:  callvirt instance valuetype [mscorlib]System.Collections.Generic.Dictionary`2/Enumerator<!0,!1> class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V>::GetEnumerator()
+	IL_0021:  stloc.1 
+	.try { // 0
+	  IL_0022:  br.s IL_0033
+
+	  IL_0024:  ldloca.s 1
+	  IL_0026:  call instance valuetype [mscorlib]System.Collections.Generic.KeyValuePair`2<!0,!1> valuetype [mscorlib]System.Collections.Generic.Dictionary`2/Enumerator<!!K, !!V>::get_Current()
+	  IL_002b:  stloc.2 
+	  IL_002c:  ldarg.2 
+	  IL_002d:  ldloc.2 
+	  IL_002e:  callvirt instance void class [mscorlib]System.Action`1<valuetype [mscorlib]System.Collections.Generic.KeyValuePair`2<!!K, !!V>>::Invoke(!0)
+	  IL_0033:  ldloca.s 1
+	  IL_0035:  call instance bool valuetype [mscorlib]System.Collections.Generic.Dictionary`2/Enumerator<!!K, !!V>::MoveNext()
+	  IL_003a:  brtrue.s IL_0024
+
+	  IL_003c:  leave.s IL_004c
+
+	} // end .try 0
+	finally  { // 0
+	  IL_003e:  ldloca.s 1
+	  IL_0040:  constrained. valuetype [mscorlib]System.Collections.Generic.Dictionary`2/Enumerator<!!0,!!1>
+	  IL_0046:  callvirt instance void class [mscorlib]System.IDisposable::Dispose()
+	  IL_004b:  endfinally 
+	} // end handler 0
+	IL_004c:  ret 
+    } // end of method SharedUtils::Write
+
+    // method line 10
+    .method public static hidebysig 
+           default class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V> ReadDict<K,V> (class [mscorlib]System.IO.BinaryReader 'br', class [mscorlib]System.Func`1<valuetype [mscorlib]System.ValueTuple`2<!!K, !!V>> read)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x2230
+	// Code size 63 (0x3f)
+	.maxstack 3
+	.locals init (
+		class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V>	V_0,
+		int32	V_1,
+		int32	V_2,
+		valuetype [mscorlib]System.ValueTuple`2<!!K, !!V>	V_3)
+	IL_0000:  ldnull 
+	IL_0001:  stloc.0 
+	IL_0002:  ldarg.0 
+	IL_0003:  callvirt instance bool class [mscorlib]System.IO.BinaryReader::ReadBoolean()
+	IL_0008:  brfalse.s IL_003d
+
+	IL_000a:  ldarg.0 
+	IL_000b:  callvirt instance int32 class [mscorlib]System.IO.BinaryReader::ReadInt32()
+	IL_0010:  stloc.1 
+	IL_0011:  ldloc.1 
+	IL_0012:  newobj instance void class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V>::'.ctor'(int32)
+	IL_0017:  stloc.0 
+	IL_0018:  ldc.i4.0 
+	IL_0019:  stloc.2 
+	IL_001a:  br.s IL_0039
+
+	IL_001c:  ldarg.1 
+	IL_001d:  callvirt instance !0 class [mscorlib]System.Func`1<valuetype [mscorlib]System.ValueTuple`2<!!K, !!V>>::Invoke()
+	IL_0022:  stloc.3 
+	IL_0023:  ldloc.0 
+	IL_0024:  ldloc.3 
+	IL_0025:  ldfld !0 valuetype [mscorlib]System.ValueTuple`2<!!0,!!1>::Item1
+	IL_002a:  ldloc.3 
+	IL_002b:  ldfld !1 valuetype [mscorlib]System.ValueTuple`2<!!0,!!1>::Item2
+	IL_0030:  callvirt instance void class [mscorlib]System.Collections.Generic.Dictionary`2<!!K, !!V>::Add(!0, !1)
+	IL_0035:  ldloc.2 
+	IL_0036:  ldc.i4.1 
+	IL_0037:  add 
+	IL_0038:  stloc.2 
+	IL_0039:  ldloc.2 
+	IL_003a:  ldloc.1 
+	IL_003b:  blt.s IL_001c
+
+	IL_003d:  ldloc.0 
+	IL_003e:  ret 
+    } // end of method SharedUtils::ReadDict
+
+    // method line 11
+    .method public static hidebysig 
+           default void SetPropertyDefaultValues (object obj)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x227c
+	// Code size 74 (0x4a)
+	.maxstack 4
+	.locals init (
+		class [mscorlib]System.Reflection.PropertyInfo[]	V_0,
+		int32	V_1,
+		class [mscorlib]System.Reflection.PropertyInfo	V_2,
+		class [System]System.ComponentModel.DefaultValueAttribute[]	V_3)
+	IL_0000:  ldarg.0 
+	IL_0001:  callvirt instance class [mscorlib]System.Type object::GetType()
+	IL_0006:  callvirt instance class [mscorlib]System.Reflection.PropertyInfo[] class [mscorlib]System.Type::GetProperties()
+	IL_000b:  stloc.0 
+	IL_000c:  ldc.i4.0 
+	IL_000d:  stloc.1 
+	IL_000e:  br.s IL_0043
+
+	IL_0010:  ldloc.0 
+	IL_0011:  ldloc.1 
+	IL_0012:  ldelem.ref 
+	IL_0013:  stloc.2 
+	IL_0014:  ldloc.2 
+	IL_0015:  ldtoken [System]System.ComponentModel.DefaultValueAttribute
+	IL_001a:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_001f:  ldc.i4.0 
+	IL_0020:  callvirt instance object[] class [mscorlib]System.Reflection.MemberInfo::GetCustomAttributes(class [mscorlib]System.Type, bool)
+	IL_0025:  castclass class [System]System.ComponentModel.DefaultValueAttribute[]
+	IL_002a:  stloc.3 
+	IL_002b:  ldloc.3 
+	IL_002c:  ldlen 
+	IL_002d:  brfalse.s IL_003f
+
+	IL_002f:  ldloc.2 
+	IL_0030:  ldarg.0 
+	IL_0031:  ldloc.3 
+	IL_0032:  ldc.i4.0 
+	IL_0033:  ldelem.ref 
+	IL_0034:  callvirt instance object class [System]System.ComponentModel.DefaultValueAttribute::get_Value()
+	IL_0039:  ldnull 
+	IL_003a:  callvirt instance void class [mscorlib]System.Reflection.PropertyInfo::SetValue(object, object, object[])
+	IL_003f:  ldloc.1 
+	IL_0040:  ldc.i4.1 
+	IL_0041:  add 
+	IL_0042:  stloc.1 
+	IL_0043:  ldloc.1 
+	IL_0044:  ldloc.0 
+	IL_0045:  ldlen 
+	IL_0046:  conv.i4 
+	IL_0047:  blt.s IL_0010
+
+	IL_0049:  ret 
+    } // end of method SharedUtils::SetPropertyDefaultValues
+
+    // method line 12
+    .method public static hidebysig 
+           default void SetPropertyDefaultValues (object obj, class SharedUtils/TmpPropertyInfo[]& Properties)  cil managed 
+    {
+        .custom instance void class [mscorlib]System.Runtime.CompilerServices.ExtensionAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+        // Method begins at RVA 0x22d4
+	// Code size 166 (0xa6)
+	.maxstack 4
+	.locals init (
+		class [mscorlib]System.Reflection.PropertyInfo[]	V_0,
+		int32	V_1,
+		int32	V_2)
+	IL_0000:  ldarg.1 
+	IL_0001:  ldind.ref 
+	IL_0002:  brtrue.s IL_005f
+
+	IL_0004:  ldarg.0 
+	IL_0005:  callvirt instance class [mscorlib]System.Type object::GetType()
+	IL_000a:  callvirt instance class [mscorlib]System.Reflection.PropertyInfo[] class [mscorlib]System.Type::GetProperties()
+	IL_000f:  stloc.0 
+	IL_0010:  ldarg.1 
+	IL_0011:  ldloc.0 
+	IL_0012:  ldlen 
+	IL_0013:  conv.i4 
+	IL_0014:  newarr SharedUtils/TmpPropertyInfo
+	IL_0019:  stind.ref 
+	IL_001a:  ldc.i4.0 
+	IL_001b:  stloc.1 
+	IL_001c:  br.s IL_0058
+
+	IL_001e:  ldarg.1 
+	IL_001f:  ldind.ref 
+	IL_0020:  ldloc.1 
+	IL_0021:  newobj instance void class SharedUtils/TmpPropertyInfo::'.ctor'()
+	IL_0026:  stelem.ref 
+	IL_0027:  ldarg.1 
+	IL_0028:  ldind.ref 
+	IL_0029:  ldloc.1 
+	IL_002a:  ldelem.ref 
+	IL_002b:  ldloc.0 
+	IL_002c:  ldloc.1 
+	IL_002d:  ldelem.ref 
+	IL_002e:  stfld class [mscorlib]System.Reflection.PropertyInfo SharedUtils/TmpPropertyInfo::Property
+	IL_0033:  ldarg.1 
+	IL_0034:  ldind.ref 
+	IL_0035:  ldloc.1 
+	IL_0036:  ldelem.ref 
+	IL_0037:  ldloc.0 
+	IL_0038:  ldloc.1 
+	IL_0039:  ldelem.ref 
+	IL_003a:  ldtoken [System]System.ComponentModel.DefaultValueAttribute
+	IL_003f:  call class [mscorlib]System.Type class [mscorlib]System.Type::GetTypeFromHandle(valuetype [mscorlib]System.RuntimeTypeHandle)
+	IL_0044:  ldc.i4.0 
+	IL_0045:  callvirt instance object[] class [mscorlib]System.Reflection.MemberInfo::GetCustomAttributes(class [mscorlib]System.Type, bool)
+	IL_004a:  castclass class [System]System.ComponentModel.DefaultValueAttribute[]
+	IL_004f:  stfld class [System]System.ComponentModel.DefaultValueAttribute[] SharedUtils/TmpPropertyInfo::Attributes
+	IL_0054:  ldloc.1 
+	IL_0055:  ldc.i4.1 
+	IL_0056:  add 
+	IL_0057:  stloc.1 
+	IL_0058:  ldloc.1 
+	IL_0059:  ldarg.1 
+	IL_005a:  ldind.ref 
+	IL_005b:  ldlen 
+	IL_005c:  conv.i4 
+	IL_005d:  blt.s IL_001e
+
+	IL_005f:  ldc.i4.0 
+	IL_0060:  stloc.2 
+	IL_0061:  br.s IL_009e
+
+	IL_0063:  ldarg.1 
+	IL_0064:  ldind.ref 
+	IL_0065:  ldloc.2 
+	IL_0066:  ldelem.ref 
+	IL_0067:  ldfld class [System]System.ComponentModel.DefaultValueAttribute[] SharedUtils/TmpPropertyInfo::Attributes
+	IL_006c:  brfalse.s IL_009a
+
+	IL_006e:  ldarg.1 
+	IL_006f:  ldind.ref 
+	IL_0070:  ldloc.2 
+	IL_0071:  ldelem.ref 
+	IL_0072:  ldfld class [System]System.ComponentModel.DefaultValueAttribute[] SharedUtils/TmpPropertyInfo::Attributes
+	IL_0077:  ldlen 
+	IL_0078:  brfalse.s IL_009a
+
+	IL_007a:  ldarg.1 
+	IL_007b:  ldind.ref 
+	IL_007c:  ldloc.2 
+	IL_007d:  ldelem.ref 
+	IL_007e:  ldfld class [mscorlib]System.Reflection.PropertyInfo SharedUtils/TmpPropertyInfo::Property
+	IL_0083:  ldarg.0 
+	IL_0084:  ldarg.1 
+	IL_0085:  ldind.ref 
+	IL_0086:  ldloc.2 
+	IL_0087:  ldelem.ref 
+	IL_0088:  ldfld class [System]System.ComponentModel.DefaultValueAttribute[] SharedUtils/TmpPropertyInfo::Attributes
+	IL_008d:  ldc.i4.0 
+	IL_008e:  ldelem.ref 
+	IL_008f:  callvirt instance object class [System]System.ComponentModel.DefaultValueAttribute::get_Value()
+	IL_0094:  ldnull 
+	IL_0095:  callvirt instance void class [mscorlib]System.Reflection.PropertyInfo::SetValue(object, object, object[])
+	IL_009a:  ldloc.2 
+	IL_009b:  ldc.i4.1 
+	IL_009c:  add 
+	IL_009d:  stloc.2 
+	IL_009e:  ldloc.2 
+	IL_009f:  ldarg.1 
+	IL_00a0:  ldind.ref 
+	IL_00a1:  ldlen 
+	IL_00a2:  conv.i4 
+	IL_00a3:  blt.s IL_0063
+
+	IL_00a5:  ret 
+    } // end of method SharedUtils::SetPropertyDefaultValues
+
+  .class nested public auto ansi beforefieldinit TmpPropertyInfo
+  	extends [mscorlib]System.Object
+  {
+    .field  public  class [mscorlib]System.Reflection.PropertyInfo Property
+    .field  public  class [System]System.ComponentModel.DefaultValueAttribute[] Attributes
+
+    // method line 682
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x4eed
+	// Code size 7 (0x7)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method TmpPropertyInfo::.ctor
+
+  } // end of class TmpPropertyInfo
+
+  .class nested private auto ansi sealed beforefieldinit '<>c__DisplayClass3_0`1'<T>
+  	extends [mscorlib]System.Object
+  {
+    .custom instance void class [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public  class [mscorlib]System.Action`1<!0> write
+
+    // method line 683
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x4ef5
+	// Code size 7 (0x7)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method <>c__DisplayClass3_0`1::.ctor
+
+    // method line 684
+    .method assembly hidebysig 
+           instance default void '<Write>b__0' (!T elem)  cil managed 
+    {
+        // Method begins at RVA 0x4efd
+	// Code size 13 (0xd)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  ldfld class [mscorlib]System.Action`1<!0> class SharedUtils/'<>c__DisplayClass3_0`1'<!0>::write
+	IL_0006:  ldarg.1 
+	IL_0007:  callvirt instance void class [mscorlib]System.Action`1<!T>::Invoke(!0)
+	IL_000c:  ret 
+    } // end of method <>c__DisplayClass3_0`1::<Write>b__0
+
+  } // end of class <>c__DisplayClass3_0`1
+
+  } // end of class SharedUtils
+
+  .class private auto ansi beforefieldinit UnitySourceGeneratedAssemblyMonoScriptTypes_v1
+  	extends [mscorlib]System.Object
+  {
+    .custom instance void class [mscorlib]System.Runtime.CompilerServices.CompilerGeneratedAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .custom instance void class [System]System.ComponentModel.EditorBrowsableAttribute::'.ctor'(valuetype [System]System.ComponentModel.EditorBrowsableState) =  (01 00 01 00 00 00 00 00 ) // ........
+
+    .custom instance void class [System]System.CodeDom.Compiler.GeneratedCodeAttribute::'.ctor'(string, string) =  (
+		01 00 31 55 6E 69 74 79 2E 4D 6F 6E 6F 53 63 72   // ..1Unity.MonoScr
+		69 70 74 47 65 6E 65 72 61 74 6F 72 2E 4D 6F 6E   // iptGenerator.Mon
+		6F 53 63 72 69 70 74 49 6E 66 6F 47 65 6E 65 72   // oScriptInfoGener
+		61 74 6F 72 FF 00 00                            ) // ator...
+
+
+    // method line 13
+    .method private static hidebysig 
+           default valuetype UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData Get ()  cil managed agressive-inlining
+    {
+        // Method begins at RVA 0x2388
+	// Code size 92 (0x5c)
+	.maxstack 4
+	.locals init (
+		valuetype UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData	V_0)
+	IL_0000:  ldloca.s 0
+	IL_0002:  initobj UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData
+	IL_0008:  ldloca.s 0
+	IL_000a:  ldc.i4 548
+	IL_000f:  newarr [mscorlib]System.Byte
+	IL_0014:  dup 
+	IL_0015:  ldtoken field valuetype '<PrivateImplementationDetails>'/'__StaticArrayInitTypeSize=548' '<PrivateImplementationDetails>'::D3FB8E0DA443BDF38875ADB7F1996313F2DE1ADB74F66904DB1C49B56D239503
+	IL_001a:  call void class [mscorlib]System.Runtime.CompilerServices.RuntimeHelpers::InitializeArray(class [mscorlib]System.Array, valuetype [mscorlib]System.RuntimeFieldHandle)
+	IL_001f:  stfld unsigned int8[] UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData::FilePathsData
+	IL_0024:  ldloca.s 0
+	IL_0026:  ldc.i4 1402
+	IL_002b:  newarr [mscorlib]System.Byte
+	IL_0030:  dup 
+	IL_0031:  ldtoken field valuetype '<PrivateImplementationDetails>'/'__StaticArrayInitTypeSize=1402' '<PrivateImplementationDetails>'::DB4627C0E92863F37770CD6551A184EB1AD6AB36584FEACB1F46814913053773
+	IL_0036:  call void class [mscorlib]System.Runtime.CompilerServices.RuntimeHelpers::InitializeArray(class [mscorlib]System.Array, valuetype [mscorlib]System.RuntimeFieldHandle)
+	IL_003b:  stfld unsigned int8[] UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData::TypesData
+	IL_0040:  ldloca.s 0
+	IL_0042:  ldc.i4.s 0x09
+	IL_0044:  stfld int32 UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData::TotalFiles
+	IL_0049:  ldloca.s 0
+	IL_004b:  ldc.i4.s 0x32
+	IL_004d:  stfld int32 UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData::TotalTypes
+	IL_0052:  ldloca.s 0
+	IL_0054:  ldc.i4.0 
+	IL_0055:  stfld bool UnitySourceGeneratedAssemblyMonoScriptTypes_v1/MonoScriptData::IsEditorOnly
+	IL_005a:  ldloc.0 
+	IL_005b:  ret 
+    } // end of method UnitySourceGeneratedAssemblyMonoScriptTypes_v1::Get
+
+    // method line 14
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x23f0
+	// Code size 7 (0x7)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method UnitySourceGeneratedAssemblyMonoScriptTypes_v1::.ctor
+
+  .class nested private sequential ansi sealed beforefieldinit MonoScriptData
+  	extends [mscorlib]System.ValueType
+  {
+    .field  public  unsigned int8[] FilePathsData
+    .field  public  unsigned int8[] TypesData
+    .field  public  int32 TotalTypes
+    .field  public  int32 TotalFiles
+    .field  public  bool IsEditorOnly
+
+  } // end of class MonoScriptData
+
+  } // end of class UnitySourceGeneratedAssemblyMonoScriptTypes_v1
+
+.namespace Eleon
+{
+  .class public auto ansi sealed SenderType
+  	extends [mscorlib]System.Enum
+  {
+    .field  public specialname rtspecialname  unsigned int8 value__
+    .field public static literal  valuetype Eleon.SenderType Unknown = int8(0x00)
+    .field public static literal  valuetype Eleon.SenderType Player = int8(0x01)
+    .field public static literal  valuetype Eleon.SenderType ServerPrio = int8(0x02)
+    .field public static literal  valuetype Eleon.SenderType ServerInfo = int8(0x03)
+    .field public static literal  valuetype Eleon.SenderType ServerForward = int8(0x04)
+    .field public static literal  valuetype Eleon.SenderType System = int8(0x05)
+
+  } // end of class Eleon.SenderType
+}
+
+.namespace Eleon
+{
+  .class public auto ansi sealed MsgChannel
+  	extends [mscorlib]System.Enum
+  {
+    .field  public specialname rtspecialname  unsigned int8 value__
+    .field public static literal  valuetype Eleon.MsgChannel Global = int8(0x00)
+    .field public static literal  valuetype Eleon.MsgChannel Faction = int8(0x01)
+    .field public static literal  valuetype Eleon.MsgChannel Alliance = int8(0x02)
+    .field public static literal  valuetype Eleon.MsgChannel SinglePlayer = int8(0x03)
+    .field public static literal  valuetype Eleon.MsgChannel Server = int8(0x04)
+
+  } // end of class Eleon.MsgChannel
+}
+
+.namespace Eleon
+{
+  .class public auto ansi beforefieldinit MsgChannelComparer
+  	extends [mscorlib]System.Object
+  	implements class [mscorlib]System.Collections.Generic.IEqualityComparer`1<valuetype Eleon.MsgChannel>  {
+    .field  public static initonly  class Eleon.MsgChannelComparer Instance
+
+    // method line 15
+    .method public final virtual hidebysig newslot 
+           instance default bool Equals (valuetype Eleon.MsgChannel a, valuetype Eleon.MsgChannel b)  cil managed 
+    {
+        // Method begins at RVA 0x23f8
+	// Code size 5 (0x5)
+	.maxstack 8
+	IL_0000:  ldarg.1 
+	IL_0001:  ldarg.2 
+	IL_0002:  ceq 
+	IL_0004:  ret 
+    } // end of method MsgChannelComparer::Equals
+
+    // method line 16
+    .method public final virtual hidebysig newslot 
+           instance default int32 GetHashCode (valuetype Eleon.MsgChannel a)  cil managed 
+    {
+        // Method begins at RVA 0x23fe
+	// Code size 2 (0x2)
+	.maxstack 8
+	IL_0000:  ldarg.1 
+	IL_0001:  ret 
+    } // end of method MsgChannelComparer::GetHashCode
+
+    // method line 17
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x2401
+	// Code size 7 (0x7)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  call instance void object::'.ctor'()
+	IL_0006:  ret 
+    } // end of method MsgChannelComparer::.ctor
+
+    // method line 18
+    .method private static hidebysig specialname rtspecialname 
+           default void '.cctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x2409
+	// Code size 11 (0xb)
+	.maxstack 8
+	IL_0000:  newobj instance void class Eleon.MsgChannelComparer::'.ctor'()
+	IL_0005:  stsfld class Eleon.MsgChannelComparer Eleon.MsgChannelComparer::Instance
+	IL_000a:  ret 
+    } // end of method MsgChannelComparer::.cctor
+
+  } // end of class Eleon.MsgChannelComparer
+}
+
+.namespace Eleon
+{
+  .class public auto ansi beforefieldinit MessageData
+  	extends [mscorlib]System.Object
+  {
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoContractAttribute::'.ctor'() =  (01 00 00 00 ) // ....
+
+    .field  public  unsigned int64 GameTime
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 0C 00 00 00 00 00 ) // ........
+
+    .field  public  valuetype Eleon.SenderType SenderType
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 01 00 00 00 00 00 ) // ........
+
+    .field  public  valuetype Eleon.MsgChannel Channel
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 02 00 00 00 00 00 ) // ........
+
+    .field  public  int32 SenderEntityId
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 03 00 00 00 00 00 ) // ........
+
+    .field  public  valuetype FactionData SenderFaction
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 04 00 00 00 00 00 ) // ........
+
+    .field  public  string SenderNameOverride
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 05 00 00 00 00 00 ) // ........
+
+    .field  public  int32 RecipientEntityId
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 06 00 00 00 00 00 ) // ........
+
+    .field  public  valuetype FactionData RecipientFaction
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 07 00 00 00 00 00 ) // ........
+
+    .field  public  string Text
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 08 00 00 00 00 00 ) // ........
+
+    .field  public  bool IsTextLocaKey
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 09 00 00 00 00 00 ) // ........
+
+    .field  public  string Arg1
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 0A 00 00 00 00 00 ) // ........
+
+    .field  public  string Arg2
+    .custom instance void class ['protobuf-net']ProtoBuf.ProtoMemberAttribute::'.ctor'(int32) =  (01 00 0B 00 00 00 00 00 ) // ........
+
+
+    // method line 19
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' ()  cil managed 
+    {
+        // Method begins at RVA 0x2415
+	// Code size 21 (0x15)
+	.maxstack 8
+	IL_0000:  ldarg.0 
+	IL_0001:  ldc.i4.m1 
+	IL_0002:  stfld int32 Eleon.MessageData::SenderEntityId
+	IL_0007:  ldarg.0 
+	IL_0008:  ldc.i4.m1 
+	IL_0009:  stfld int32 Eleon.MessageData::RecipientEntityId
+	IL_000e:  ldarg.0 
+	IL_000f:  call instance void object::'.ctor'()
+	IL_0014:  ret 
+    } // end of method MessageData::.ctor
+
+    // method line 20
+    .method public hidebysig specialname rtspecialname 
+           instance default void '.ctor' (class Eleon.MessageData other)  cil managed 
+    {
+        // Method begins at RVA 0x242c
+	// Code size 165 (0xa5)
+	.maxstack 2
+	IL_0000:  ldarg.0 
+	IL_0001:  ldc.i4.m1 
+	IL_0002:  stfld int32 Eleon.MessageData::SenderEntityId
+	IL_0007:  ldarg.0 
+	IL_0008:  ldc.i4.m1 
+	IL_0009:  stfld int32 Eleon.MessageData::RecipientEntityId
+	IL_000e:  ldarg.0 
+	IL_000f:  call instance void object::'.ctor'()
+	IL_0014:  ldarg.0 
+	IL_0015:  ldarg.1 
+	IL_0016:  ldfld valuetype Eleon.SenderType Eleon.MessageData::SenderType
+	IL_001b:  stfld valuetype Eleon.SenderType Eleon.MessageData::SenderType
+	IL_0020:  ldarg.0 
+	IL_0021:  ldarg.1 
+	IL_0022:  ldfld valuetype Eleon.MsgChannel Eleon.MessageData::Channel
+	IL_0027:  stfld valuetype Eleon.MsgChannel Eleon.MessageData::Channel
+	IL_002c:  ldarg.0 
+	IL_002d:  ldarg.1 
+	IL_002e:  ldfld int32 Eleon.MessageData::SenderEntityId
+	IL_0033:  stfld int32 Eleon.MessageData::SenderEntityId
+	IL_0038:  ldarg.0 
+	IL_0039:  ldarg.1 
+	IL_003a:  ldfld valuetype FactionData Eleon.MessageData::SenderFaction
+	IL_003f:  stfld valuetype FactionData Eleon.MessageData::SenderFaction
+	IL_0044:  ldarg.0 
+	IL_0045:  ldarg.1 
+	IL_0046:  ldfld string Eleon.MessageData::SenderNameOverride
+	IL_004b:  stfld string Eleon.MessageData::SenderNameOverride
+	IL_0050:  ldarg.0 
+	IL_0051:  ldarg.1 
+	IL_0052:  ldfld int32 Eleon.MessageData::RecipientEntityId
+	IL_0057:  stfld int32 Eleon.MessageData::RecipientEntityId
+	IL_005c:  ldarg.0 
+	IL_005d:  ldarg.1 
+	IL_005e:  ldfld valuetype FactionData Eleon.MessageData::RecipientFaction
+	IL_0063:  stfld valuetype FactionData Eleon.MessageData::RecipientFaction
+	IL_0068:  ldarg.0 
+	IL_0069:  ldarg.1 
+	IL_006a:  ldfld string Eleon.MessageData::Text
+	IL_006f:  stfld string Eleon.MessageData::Text
+	IL_0074:  ldarg.0 
+	IL_0075:  ldarg.1 
+	IL_0076:  ldfld bool Eleon.MessageData::IsTextLocaKey
+	IL_007b:  stfld bool Eleon.MessageData::IsTextLocaKey
+	IL_0080:  ldarg.0 
+	IL_0081:  ldarg.1 
+	IL_0082:  ldfld string Eleon.MessageData::Arg1
+	IL_0087:  stfld string Eleon.MessageData::Arg1
+	IL_008c:  ldarg.0 
+	IL_008d:  ldarg.1 
+	IL_008e:  ldfld string Eleon.MessageData::Arg2
+	IL_0093:  stfld string Eleon.MessageData::Arg2
+	IL_0098:  ldarg.0 
+	IL_0099:  ldarg.1 
+	IL_009a:  ldfld unsigned int64 Eleon.MessageData::GameTime
+	IL_009f:  stfld unsigned int64 Eleon.MessageData::GameTime
+	IL_00a4:  ret 
+    } // end of method MessageData::.ctor
+
+  } // end of class Eleon.MessageData
+}
+
+.namespace Eleon.Modding
+{
+  .class interface public auto ansi abstract IMod
+  {
+
+    // method line 21
+    .method public virtual hidebysig newslot abstract 
+           instance default void Init (class Eleon.Modding.IModApi modAPI)  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IMod::Init
+
+    // method line 22
+    .method public virtual hidebysig newslot abstract 
+           instance default void Shutdown ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IMod::Shutdown
+
+  } // end of class Eleon.Modding.IMod
+}
+
+.namespace Eleon.Modding
+{
+  .class interface public auto ansi abstract IEntity
+  {
+
+    // method line 23
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default int32 get_Id ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_Id
+
+    // method line 24
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default string get_Name ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_Name
+
+    // method line 25
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default valuetype FactionData get_Faction ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_Faction
+
+    // method line 26
+    .method public virtual hidebysig newslot abstract specialname 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 27
+    .method public virtual hidebysig newslot abstract specialname 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 28
+    .method public virtual hidebysig newslot abstract specialname 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 29
+    .method public virtual hidebysig newslot abstract specialname 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 30
+    .method public virtual hidebysig newslot abstract specialname 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 31
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default bool get_IsLocal ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_IsLocal
+
+    // method line 32
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default bool get_IsProxy ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_IsProxy
+
+    // method line 33
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default bool get_IsPoi ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_IsPoi
+
+    // method line 34
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default int32 get_BelongsTo ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_BelongsTo
+
+    // method line 35
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default int32 get_DockedTo ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_DockedTo
+
+    // method line 36
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default valuetype EntityType get_Type ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_Type
+
+    // method line 37
+    .method public virtual hidebysig newslot abstract specialname 
+           instance default class Eleon.Modding.IStructure get_Structure ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::get_Structure
+
+    // method line 38
+    .method public virtual hidebysig newslot abstract 
+           instance default void DamageEntity (int32 damageAmount, int32 damageType)  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::DamageEntity
+
+    // method line 39
+    .method public virtual hidebysig newslot abstract 
+           instance default void MoveForward (float32 speed)  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::MoveForward
+
+    // method line 40
+    .method public virtual hidebysig newslot abstract 
+           (null) cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::<NULL METHOD SIGNATURE>
+
+    // method line 41
+    .method public virtual hidebysig newslot abstract 
+           instance default void MoveStop ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::MoveStop
+
+    // method line 42
+    .method public virtual hidebysig newslot abstract 
+           instance default bool LoadFromDSL ()  cil managed 
+    {
+        // Method begins at RVA 0x0
+    } // end of method IEntity::LoadFromDSL
+
+	.property instance int32 Id ()
+	{
+		.get instance default int32 Eleon.Modding.IEntity::get_Id () 
+	}
+	.property instance string Name ()
+	{
+		.get instance default string Eleon.Modding.IEntity::get_Name () 
+	}
+	.property instance valuetype FactionData Faction ()
+	{
+		.get instance default valuetype FactionData Eleon.Modding.IEntity::get_Faction () 
+	}
+	.property instance Invalid type due to Could not load file or assembly 'UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyT
